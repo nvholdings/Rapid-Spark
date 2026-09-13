@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapid Spark Auto Electric | Mobile Auto Electricians — 24/7 Field Service</title>
+<meta name="description" content="Rapid Spark Auto Electric — mobile auto electrical & air conditioning specialists in Sunward Park, Boksburg. 24/7 field service, diagnostics, batteries, starters, alternators, aircon service & spares. Call 073 201 3355.">
+<style>
+  :root{
+    --navy:#0a1130; --navy2:#0e1740; --card:#131d4a; --line:#22306b;
+    --red:#e30613; --red2:#ff2b38; --white:#f4f6ff; --muted:#a8b3d9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:var(--navy);color:var(--white);line-height:1.6}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-weight:800;line-height:1.15}
+  a{color:var(--red2);text-decoration:none}
+
+  /* ---------- Header ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,17,48,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--white)}
+  .logo .bolt{width:38px;height:38px;border-radius:10px;background:var(--red);display:grid;place-items:center;box-shadow:0 0 18px rgba(227,6,19,.5)}
+  .logo small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:600;font-size:.92rem;transition:color .2s}
+  .nav-links a:hover{color:var(--white)}
+  .btn{display:inline-block;background:var(--red);color:#fff;font-weight:800;padding:12px 26px;border-radius:10px;border:none;cursor:pointer;font-size:.95rem;transition:transform .15s, box-shadow .15s;box-shadow:0 4px 18px rgba(227,6,19,.35)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(227,6,19,.5)}
+  .btn.ghost{background:transparent;border:2px solid var(--red);color:#fff}
+  .menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.6rem;cursor:pointer}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding:170px 0 110px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(700px 400px at 85% 20%, rgba(227,6,19,.16), transparent 60%),
+    radial-gradient(600px 400px at 10% 90%, rgba(60,90,220,.12), transparent 60%);}
+  .hero .container{position:relative}
+  .tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:#fff;padding:8px 16px;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px}
+  .tag .dot{width:8px;height:8px;border-radius:50%;background:#31e981;box-shadow:0 0 10px #31e981;animation:pulse 1.6s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);max-width:840px;text-transform:uppercase}
+  .hero h1 span{color:var(--red2);text-shadow:0 0 30px rgba(227,6,19,.4)}
+  .hero p{color:var(--muted);max-width:660px;font-size:1.12rem;margin:22px 0 34px}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+  .phone-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:34px}
+  .phone-chip{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 22px;font-weight:800;font-size:1.25rem;color:#fff;transition:border-color .2s}
+  .phone-chip:hover{border-color:var(--red)}
+  .phone-chip small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:52px}
+  .stat b{font-size:2rem;color:var(--red2)}
+  .stat span{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+
+  /* ---------- Sections ---------- */
+  section{padding:90px 0}
+  .sec-head{max-width:680px;margin-bottom:48px}
+  .sec-head .kicker{color:var(--red2);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
+  .sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-top:10px;text-transform:uppercase}
+  .sec-head p{color:var(--muted);margin-top:14px}
+  .alt{background:var(--navy2)}
+
+  /* ---------- Services ---------- */
+  .service-tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+  .search{flex:1;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 18px;color:var(--white);font-size:.95rem;outline:none}
+  .search:focus{border-color:var(--red)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:700;font-size:.85rem;transition:all .2s}
+  .chip.active,.chip:hover{border-color:var(--red);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:transform .18s,border-color .18s,box-shadow .18s}
+  .card:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .card .ico{width:44px;height:44px;border-radius:10px;background:rgba(227,6,19,.15);display:grid;place-items:center;margin-bottom:14px}
+  .card h3{font-size:1rem;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:.86rem}
+  .no-results{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0;display:none}
+
+  /* ---------- Products ---------- */
+  .prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px}
+  .prod .badge{display:inline-block;background:var(--red);color:#fff;font-weight:900;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:6px;margin-bottom:16px}
+  .prod ul{list-style:none}
+  .prod li{padding:8px 0;border-bottom:1px dashed var(--line);color:var(--muted);font-size:.94rem}
+  .prod li::before{content:"■";color:var(--red2);font-size:.7rem;margin-right:10px}
+  .prod li:last-child{border-bottom:none}
+
+  /* ---------- Why us ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px}
+  .why b{display:block;font-size:1.05rem;margin:12px 0 8px}
+  .why p{color:var(--muted);font-size:.9rem}
+
+  /* ---------- Process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;counter-reset:step}
+  .step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 24px 24px}
+  .step::before{counter-increment:step;content:"0" counter(step);font-size:2.6rem;font-weight:900;color:rgba(227,6,19,.22);position:absolute;top:8px;right:16px}
+  .step b{display:block;font-size:1.02rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.88rem}
+
+  /* ---------- CTA banner ---------- */
+  .cta{background:linear-gradient(135deg,var(--red),#a0040e);border-radius:20px;padding:56px 40px;text-align:center;color:#fff}
+  .cta h2{font-size:clamp(1.7rem,3.4vw,2.4rem);text-transform:uppercase}
+  .cta p{margin:14px auto 28px;max-width:520px;font-weight:600}
+  .cta .btn{background:#fff;color:var(--red)}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+  form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+  .field input,.field select,.field textarea{width:100%;background:var(--navy);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--white);font-size:.95rem;outline:none;font-family:inherit}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red)}
+  .info-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;margin-bottom:18px}
+  .info-card h3{font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .info-card p,.info-card a{color:var(--muted);font-size:.92rem;display:block;margin-bottom:8px}
+  .info-card a:hover{color:#fff}
+  .info-card .big{font-size:1.5rem;font-weight:900;color:#fff}
+  .map-embed{border:0;border-radius:16px;width:100%;height:280px;display:block}
+
+  .fee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .fee{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px}
+  .fee b{display:block;font-size:1.05rem;margin:12px 0 8px}
+  .fee p{color:var(--muted);font-size:.9rem}
+  .fee .price{font-size:2rem;font-weight:900;color:var(--red2)}
+  .pay-methods{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .pay{background:var(--navy);border:1px solid var(--line);border-radius:10px;padding:12px 20px;font-weight:800;color:#fff;font-size:.9rem}
+  .notice{border:1px solid var(--red);background:rgba(227,6,19,.08);border-radius:12px;padding:16px 20px;color:var(--white);font-size:.92rem;margin-bottom:22px}
+  .notice b{color:var(--red2)}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem}
+  footer .fphones{font-weight:800;color:#fff;font-size:1rem;margin-bottom:6px}
+
+  @media(max-width:820px){
+    .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy2);flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .menu-toggle{display:block}
+    .contact-grid{grid-template-columns:1fr}
+    section{padding:64px 0}
+    .phone-chip{font-size:1.05rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#top">
+      <span class="bolt"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+      <span>Rapid Spark<small>Auto Electric</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#products">Spares</a>
+      <a href="#callout">Call-Out Fee</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="tel:+27732013355">📞 Call Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container">
+    <div class="tag"><span class="dot"></span> We Are Mobile · 24/7 Field Service</div>
+    <h1>When your car's electrics fail, we bring the <span>spark</span> back.</h1>
+    <p>Rapid Spark Auto Electric is a fully mobile auto electrical & air conditioning service based in Sunward Park, Boksburg. We come to you — home, work, or roadside — day or night, with spares on hand to get you moving again.</p>
+    <div class="hero-cta">
+      <a class="btn" href="tel:+27732013355">Call 073 201 3355</a>
+      <a class="btn ghost" href="#services">View All Services</a>
+    </div>
+    <div class="phone-strip">
+      <a class="phone-chip" href="tel:+27732013355"><span>📱</span><span>073 201 3355<small>Call or WhatsApp</small></span></a>
+      <a class="phone-chip" href="tel:+27838739152"><span>📱</span><span>083 873 9152<small>Alternative line</small></span></a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>60+</b><span>Electrical & aircon services</span></div>
+      <div class="stat"><b>24/7</b><span>Mobile field service</span></div>
+      <div class="stat"><b>All makes</b><span>Cars, bakkies, trucks & motorcycles</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">What we do</div>
+      <h2>Services</h2>
+      <p>Search or filter to find exactly what your vehicle needs. If it's electrical or aircon, we fix it — at our workshop or on-site.</p>
+    </div>
+    <div class="service-tools">
+      <input class="search" id="search" type="search" placeholder="Search services… e.g. battery, alarm, aircon">
+      <div class="chips" id="chips">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="diag">Diagnostics</button>
+        <button class="chip" data-cat="repair">Repairs</button>
+        <button class="chip" data-cat="install">Installations</button>
+        <button class="chip" data-cat="battery">Batteries & Charging</button>
+        <button class="chip" data-cat="aircon">Air Conditioning</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="no-results" id="noResults">No service matches your search — <a href="tel:+27732013355">call us</a>, we probably still do it.</div>
+  </div>
+</section>
+
+<section class="alt" id="products">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">On the shelf</div>
+      <h2>Spares & Components</h2>
+      <p>Quality parts carried in stock — fitted on the spot during our mobile call-outs or available over the counter.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod">
+        <div class="badge">Auto Electrical Spares</div>
+        <ul>
+          <li>Starters & Alternators</li>
+          <li>Batteries</li>
+          <li>Terminals & Fuses</li>
+          <li>Plugs, Globes & Relays</li>
+          <li>LED Lights & Connectors</li>
+        </ul>
+      </div>
+      <div class="prod">
+        <div class="badge">Air Conditioning Spares</div>
+        <ul>
+          <li>Compressors & Fans</li>
+          <li>Gas & Regassing</li>
+          <li>Fittings & Thermostats</li>
+          <li>PAG Oil</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="callout">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">Mobile service policy</div>
+      <h2>Call-Out & Fuel Fee</h2>
+      <p>We come to you — but fuel isn't free. A small call-out fee covers our travel to your location and is <strong style="color:#fff">paid upfront, before your quotation is prepared</strong>. Once paid, we hit the road and your full quote follows on-site or within the hour.</p>
+    </div>
+    <div class="fee-grid">
+      <div class="fee">
+        <div class="price">R250</div>
+        <b>Covers fuel & travel</b>
+        <p>Covers the technician's fuel and travel time to your location anywhere in our service area.</p>
+      </div>
+      <div class="fee">
+        <div class="price">R250</div>
+        <b>All areas, one fee</b>
+        <p>Boksburg, Germiston, Benoni, Kempton Park and surrounds — same flat fee wherever you are in our service area.</p>
+      </div>
+      <div class="fee">
+        <div class="price">Credited</div>
+        <b>Toward your repair</b>
+        <p>Accept our quotation and the call-out fee is deducted from your final invoice. You never pay it twice.</p>
+      </div>
+    </div>
+    <div class="fee-grid" style="margin-top:18px">
+      <div class="fee">
+        <b>How it works</b>
+        <p>1. Call or WhatsApp us with your vehicle & location<br>
+        2. Pay the flat R250 call-out fee via EFT, SnapScan or card link<br>
+        3. We dispatch immediately — quote follows on-site<br>
+        4. Accept the quote and the fee comes off your bill</p>
+      </div>
+      <div class="fee">
+        <b>Why we charge it</b>
+        <p>Fuel, vehicle running costs and technician time are real expenses on every call-out. The fee filters out non-serious enquiries so our 24/7 unit stays available for genuine breakdowns — and it's always credited back when you proceed with the repair.</p>
+        <div class="pay-methods">
+          <span class="pay">💳 Card</span>
+          <span class="pay">📱 SnapScan</span>
+          <span class="pay">🏦 EFT</span>
+          <span class="pay">📲 PayFast</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">Why Rapid Spark</div>
+      <h2>We come to you — 24/7</h2>
+      <p>Breakdowns don't keep office hours. Neither do we. Modern vehicles are computers on wheels — you need specialists with the right tools and spares on board.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why"><b>🚐 Fully mobile</b><p>Our field service unit comes to you — home, office or roadside — anywhere in Boksburg, Germiston and surrounding areas, 24/7.</p></div>
+      <div class="why"><b>⚡ Spares on board</b><p>Starters, alternators, batteries, fuses, relays, globes and more carried in stock, so most jobs are finished in one visit.</p></div>
+      <div class="why"><b>🔍 Diagnostic fault finding</b><p>Dealer-level scan tools plus hands-on voltage-drop testing. We find the root cause, not just the symptom.</p></div>
+      <div class="why"><b>❄️ Aircon specialists</b><p>Installation, service, regassing, compressors and full A/C component supply and fit.</p></div>
+      <div class="why"><b>🛡️ Guaranteed workmanship</b><p>Every repair and installation is backed by our guarantee on parts and labour.</p></div>
+      <div class="why"><b>💬 Straight talk</b><p>Clear quotes before work begins. No surprise charges, ever.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="process">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">How it works</div>
+      <h2>From fault to fixed in four steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><b>Call or WhatsApp</b><p>Reach us on 073 201 3355 any time. Describe the symptom and your location — we'll quote the call-out fee.</p></div>
+      <div class="step"><b>Pay the call-out fee</b><p>Settle the fuel fee by EFT, SnapScan or card link. We dispatch immediately — day or night.</p></div>
+      <div class="step"><b>Approve the quote</b><p>Your full quotation follows on-site. Accept it and the call-out fee is credited off your bill.</p></div>
+      <div class="step"><b>Fixed & tested</b><p>We repair on-site, test under load and guarantee the work before we leave.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta">
+      <h2>Stranded? Battery dead? Aircon blowing hot?</h2>
+      <p>Call now — our mobile unit is on the road 24/7 across Boksburg, Germiston and surrounds.</p>
+      <a class="btn" href="tel:+27732013355">📞 073 201 3355</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">Get in touch</div>
+      <h2>Book a call-out or visit</h2>
+      <p>Fastest response is by phone or WhatsApp — we answer 24/7.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="notice">🚨 <b>Call-out fee applies:</b> a flat fuel fee of R250 is payable upfront before we travel to you and prepare your quotation. It is <b>credited toward your repair</b> when you accept the quote.</div>
+      <form onsubmit="event.preventDefault(); window.location.href='https://wa.me/27732013355?text='+encodeURIComponent('Hi Rapid Spark! I need help with: '+(document.getElementById('vehicle').value||'my vehicle')+' — '+(document.getElementById('msg').value||''));">
+        <div class="field"><label for="name">Your name</label><input id="name" required placeholder="e.g. Thabo M."></div>
+        <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" required placeholder="e.g. 082 123 4567"></div>
+        <div class="field"><label for="vehicle">Vehicle make & model</label><input id="vehicle" placeholder="e.g. Toyota Hilux 2019"></div>
+        <div class="field"><label for="service">Service needed</label>
+          <select id="service"><option>General electrical diagnosis</option></select>
+        </div>
+        <div class="field"><label for="msg">Describe the problem</label><textarea id="msg" rows="4" placeholder="e.g. Battery keeps draining overnight, dash lights flicker…"></textarea></div>
+        <button class="btn" type="submit" style="width:100%">Send via WhatsApp</button>
+      </form>
+      <div>
+        <div class="info-card">
+          <h3>⚡ Rapid Spark Auto Electric</h3>
+          <p>Sunward Park, Boksburg, Gauteng, South Africa</p>
+          <a class="big" href="tel:+27732013355">📞 073 201 3355</a>
+          <a class="big" href="tel:+27838739152">📞 083 873 9152</a>
+          <a href="https://wa.me/27732013355" target="_blank" rel="noopener">💬 WhatsApp us directly</a>
+          <p>🕒 Workshop: Mon–Fri 08:00–17:00 · Sat 08:00–13:00</p>
+          <p>🚨 <strong style="color:#fff">Mobile field service: 24/7</strong></p>
+          <a href="https://www.google.com/maps/place/Rapid+Spark+Auto+Electric/@-26.251143,28.2505834,17z" target="_blank" rel="noopener">📍 Get directions on Google Maps</a>
+        </div>
+        <iframe class="map-embed" loading="lazy"
+          src="https://www.google.com/maps?q=-26.251143,28.2505834&z=16&output=embed"
+          title="Rapid Spark Auto Electric map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fphones">📞 073 201 3355 &nbsp;·&nbsp; 083 873 9152 &nbsp;·&nbsp; 24/7 Mobile Field Service</div>
+    <p>© 2026 Rapid Spark Auto Electric · Sunward Park, Boksburg, Gauteng · All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+const SERVICES = [
+  ["24/7 Mobile field service","We come to you — home, work or roadside, any hour, with spares on board.","repair"],
+  ["Car electrical diagnostics","Full-system scan and testing to pinpoint any electrical fault.","diag"],
+  ["Battery replacement","Supply and fit quality batteries for all vehicle types.","battery"],
+  ["Starter motor repair","Repair or replace faulty starters — click, no-crank and slow-crank issues.","repair"],
+  ["Alternator replacement","Charging system repair so your battery stays charged on the road.","battery"],
+  ["Car wiring repair","Trace and repair shorts, damaged looms and corroded connections.","repair"],
+  ["Check engine light diagnostics","Read and clear fault codes, fix the cause properly.","diag"],
+  ["Car electrical system inspection","Preventative full-vehicle electrical health check.","diag"],
+  ["Ignition system repair","Coils, plugs, switches and immobilizer-linked ignition faults.","repair"],
+  ["Power window repair","Windows stuck, slow or dead? Motors, regulators and switches fixed.","repair"],
+  ["Headlight repair","Wiring, bulbs, ballasts and lens issues sorted.","repair"],
+  ["Car alarm installation","Quality alarms fitted with anti-hijack options.","install"],
+  ["Remote start installation","Start your vehicle from a distance — perfect for cold mornings.","install"],
+  ["Fuse replacement","Correct fuse diagnosis and replacement to protect your circuits.","repair"],
+  ["Dashboard light repair","Fix warning lights, dim displays and faulty dash illumination.","repair"],
+  ["Car ECU diagnostics","Module-level diagnostics, coding and reflashing support.","diag"],
+  ["Trailer wiring installation","Complete trailer and caravan wiring with brake-away setups.","install"],
+  ["Central locking repair","Door actuators, remotes and modules repaired or replaced.","repair"],
+  ["Electric mirror repair","Power mirrors, folding and heating functions restored.","repair"],
+  ["Reverse camera installation","Crisp backup cameras with screen or mirror display.","install"],
+  ["Parking sensor installation","Front and rear parking sensors professionally fitted.","install"],
+  ["ABS fault diagnostics","ABS, traction control and brake module fault tracing.","diag"],
+  ["Car audio installation","Head units, speakers, amps and full sound systems.","install"],
+  ["Accessory wiring","Aux lights, fridges, inverters and 12V accessories wired safely.","install"],
+  ["Electric seat repair","Seat motors, switches, heating and memory functions.","repair"],
+  ["Electric sunroof repair","Sunroof motors, tracks and drainage faults fixed.","repair"],
+  ["Instrument cluster repair","Dead gauges, odometer and backlighting repairs.","repair"],
+  ["Bluetooth handsfree installation","Safe, legal hands-free calling in any vehicle.","install"],
+  ["Car sensor replacement","Oxygen, crank, cam, temperature and more — OEM quality.","repair"],
+  ["Immobilizer repair","Key coding, transponder and immobilizer fault solutions.","repair"],
+  ["Towbar wiring","Professional towbar electrics for trailers and caravans.","install"],
+  ["Vehicle tracking installation","Approved tracking units fitted, insurance compliant.","install"],
+  ["Relay replacement","Clicking, dead circuits? Faulty relays diagnosed and replaced.","repair"],
+  ["Battery terminal cleaning","Corrosion removal and terminal service for reliable starting.","battery"],
+  ["Keyless entry repair","Smart key and push-start system faults resolved.","repair"],
+  ["Wiper motor repair","Slow, stuck or dead wipers repaired or replaced.","repair"],
+  ["Car horn repair","Horns, relays and steering column contacts fixed.","repair"],
+  ["Power door lock repair","Individual door locks and actuators repaired.","repair"],
+  ["Daytime running light installation","DRL kits fitted for safety and style.","install"],
+  ["Electric fan repair","Cooling fan motors and relays for overheating issues.","repair"],
+  ["Heated seat wiring","Aftermarket heated seat installation and repair.","install"],
+  ["Car phone charger installation","Dash-mounted USB and 12V outlets fitted cleanly.","install"],
+  ["Custom lighting installation","LED strips, interior and exterior custom lighting.","install"],
+  ["Fog light installation","Front and rear fog lights wired and fitted.","install"],
+  ["Automotive voltage drop testing","Precision testing to find hidden resistance in circuits.","diag"],
+  ["Amp installation","Subwoofers and amplifiers installed with proper cabling.","install"],
+  ["Power outlet installation","Additional 12V/USB outlets for work and travel.","install"],
+  ["Under dash wiring","Neat, safe under-dash accessory and gauge wiring.","install"],
+  ["GPS installation","Navigation and fleet GPS units professionally fitted.","install"],
+  ["Remote central locking installation","Upgrade manual locks to remote central locking.","install"],
+  ["Motorcycle electrical repair","Bikes and quads — wiring, charging, lights and starters.","repair"],
+  ["Electric tailgate repair","Power tailgate motors, struts and module faults.","repair"],
+  // From your flyer — aircon & harness work
+  ["Air conditioning installation & service","Full A/C system fitment, servicing and performance checks.","aircon"],
+  ["Aircon regassing","Gas refill and leak check to restore ice-cold cooling.","aircon"],
+  ["A/C compressor & fan replacement","Compressors, condenser and cooling fans supplied and fitted.","aircon"],
+  ["Harness repair & re-wiring","Damaged engine bay or body harnesses repaired or rebuilt.","repair"],
+  ["Key coding","Transponder keys and remotes coded to your vehicle.","repair"],
+  ["Engine safety installation","Engine safety and anti-hijack systems professionally fitted.","install"],
+];
+
+const ICONS = {
+  diag:"🔍", repair:"🔧", install:"⚡", battery:"🔋", aircon:"❄️"
+};
+const grid = document.getElementById("grid");
+const noRes = document.getElementById("noResults");
+let activeCat = "all", query = "";
+
+function render(){
+  grid.innerHTML = "";
+  const list = SERVICES.filter(([name,desc,cat]) =>
+    (activeCat==="all" || cat===activeCat) &&
+    (name.toLowerCase().includes(query) || desc.toLowerCase().includes(query))
+  );
+  list.forEach(([name,desc,cat])=>{
+    const d = document.createElement("div");
+    d.className = "card";
+    d.innerHTML = `<div class="ico">${ICONS[cat]}</div><h3>${name}</h3><p>${desc}</p>`;
+    grid.appendChild(d);
+  });
+  noRes.style.display = list.length ? "none" : "block";
+  grid.querySelectorAll(".card").forEach(el=>{
+    el.style.opacity=0; el.style.transform="translateY(14px)";
+    el.style.transition="opacity .4s ease, transform .4s ease";
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.opacity=1; el.style.transform="none";}));
+  });
+}
+render();
+
+document.getElementById("search").addEventListener("input", e=>{
+  query = e.target.value.trim().toLowerCase(); render();
+});
+document.getElementById("chips").addEventListener("click", e=>{
+  const btn = e.target.closest(".chip"); if(!btn) return;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+  btn.classList.add("active");
+  activeCat = btn.dataset.cat; render();
+});
+
+// populate select
+const sel = document.getElementById("service");
+SERVICES.forEach(([n])=>{ const o=document.createElement("option"); o.textContent=n; sel.appendChild(o); });
+
+// mobile nav
+const nav = document.getElementById("navLinks");
+document.getElementById("menuToggle").addEventListener("click", ()=> nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=> nav.classList.remove("open")));
+</script>
+</body>
+</html>
